@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="admin">
+
+    <typeAlias type="com.camel.blog.bean.Admin" alias="admin" />
+
+    <resultMap id="adminMap" class="admin">
+        <result column="id" property="id" />
+        <result column="create_date" property="createDate" />
+        <result column="modified_date" property="modifiedDate" />
+        <result column="user_name" property="userName" />
+        <result column="password" property="password" />
+    </resultMap>
+
+    <select id="getAdmin" resultMap="adminMap" parameterClass="string">
+        SELECT * from admin WHERE user_name = #value#
+    </select>
+    
+</sqlMap>
