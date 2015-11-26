@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.camel.blog.bean.Admin;
-import com.camel.blog.dao.AdminDaoImp;
+import com.camel.blog.dao.impl.AdminDaoImp;
 
 /**
  * Created by QYD on 2015/11/18.
  */
 @RestController
-public class TestBeanController {
-    private static final Logger LOG = Logger.getLogger(TestBeanController.class);
+public class TestBeanService {
+    private static final Logger LOG = Logger.getLogger(TestBeanService.class);
     @Autowired
     private AdminDaoImp adminDao;
 	
-	@RequestMapping("/test.do")
+	@RequestMapping("/test.html")
     public ModelAndView getShopInJSON(@RequestParam("name") String name, @RequestParam("pass") String pass) {
 /*
         Admin admin = adminDao.getAdmin(name);

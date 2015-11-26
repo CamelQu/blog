@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+           "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="techCode">
+
+    <typeAlias type="com.camel.blog.bean.TechCode" alias="techCode" />
+
+    <resultMap id="techCodeMap" class="techCode">
+        <result column="id" property="id" />
+        <result column="create_date" property="createDate" />
+        <result column="modified_date" property="modifiedDate" />
+        <result column="region_code" property="techRegionCode" />
+        <result column="region_name" property="techRegionName" />
+        <result column="label_code" property="techLabelCode" />
+        <result column="label_name" property="techLabelName" />
+    </resultMap>
+    
+    <sql id="columns">
+        id, create_date, modified_date, region_code, label_code, region_name, label_name
+    </sql>
+
+    <select id="getTechCodeAll" resultMap="techCodeMap">
+        SELECT
+            <include refid="columns" />
+        FROM tech_code
+    </select>
+    
+    <select id="getTechCodeByRegionName" resultMap="techCodeMap" parameterClass="java.lang.String">
+        SELECT
+            <include refid="columns" />
+        FROM tech_code WHERE region_name = #value#
+    </select>
+    
+    <select id="getTechCodeByLabelName" resultMap="techCodeMap" parameterClass="java.lang.String">
+        SELECT
+            <include refid="columns" />
+        FROM tech_code WHERE label_name = #value#
+    </select>
+    
+    <select id="getTechCodeByRegionCode" resultMap="techCodeMap" parameterClass="java.lang.String">
+        SELECT
+            <include refid="columns" />
+        FROM tech_code WHERE region_code = #value#
+    </select>
+    
+    <!-- <select id="getTechCodeByLabelCode" resultMap="techCodeMap" parameterClass="java.lang.String">
+        SELECT
+            <include refid="columns" />
+        FROM tech_code WHERE label_code = #value#
+    </select>
+     -->
+</sqlMap>

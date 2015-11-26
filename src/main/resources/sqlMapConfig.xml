@@ -14,5 +14,6 @@ PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
         useStatementNamespaces="true" />
 
     <sqlMap resource="sqlMap/Admin.xml" />
+    <sqlMap resource="sqlMap/TechCode.xml" />
 
 </sqlMapConfig>
