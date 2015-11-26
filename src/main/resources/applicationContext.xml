@@ -19,6 +19,7 @@
 
     <!-- 自动扫描 -->
     <context:component-scan base-package="com.camel.blog.dao" />
+    <context:component-scan base-package="com.camel.blog.service" />
     <!-- 配置数据源属性文件 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
@@ -60,6 +61,7 @@
             <list>
                 <value>/WebPage/</value>
                 <value>/WebPage/camel/</value>
+                <value>/WebPage/tech/</value>
             </list>
         </property>
         <property name="freemarkerSettings">

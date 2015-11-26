@@ -48,7 +48,7 @@ public class TechServiceImpl implements TechService {
                 String regionCode = articleId.substring(0, 1);
                 String labelCode = articleId.substring(1, 2);
                 long timestamps = Long.parseLong(articleId.substring(2));
-                Date publishDate = new Date(timestamps);
+                Date publishDate = new Date(timestamps * 1000);
 
                 return techArticleDao.getTechArticle(regionCode, labelCode, publishDate);
             } catch (Exception e) {

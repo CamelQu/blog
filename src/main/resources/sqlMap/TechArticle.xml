@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+           "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="techArticle">
+
+    <typeAlias type="com.camel.blog.bean.TechArticle" alias="techArticle" />
+
+    <resultMap id="techArticleMap" class="techArticle">
+        <result column="id" property="id" />
+        <result column="create_date" property="createDate" />
+        <result column="modified_date" property="modifiedDate" />
+        <result column="region_code" property="regionCode" />
+        <result column="label_code" property="labelCode" />
+        <result column="publish_date" property="publishDate" />
+        <result column="title" property="title" />
+        <result column="count" property="count" />
+        <result column="author" property="author" />
+        <result column="email" property="email" />
+        <result column="content" property="content" />
+    </resultMap>
+    
+    <sql id="columns">
+        id, create_date, modified_date, region_code, label_code, title, publish_date,
+        author, count, email, content
+    </sql>
+
+    <select id="getTechArticle" resultMap="techArticleMap" parameterClass="java.util.Map">
+        SELECT
+            <include refid="columns" />
+        FROM tech_article
+        WHERE region_code = #regionCode# AND label_code = #labelCode# AND publish_date = #publishDate#
+    </select>
+    
+</sqlMap>

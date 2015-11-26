@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.camel.blog.bean.TechArticle;
@@ -21,13 +22,14 @@ import com.camel.blog.service.TechService;
  *
  * At 2015 下午11:42:17
  */
+@RestController
 public class TechRequest {
     private static final Logger LOG = Logger.getLogger(TechRequest.class);
 
     @Autowired
     private TechService         techService;
 
-    @RequestMapping(value = "/tech/{articleId}")
+    @RequestMapping(value = "/tech/{articleId}.html")
     public ModelAndView getTechArticle(@PathVariable String articleId) {
         try {
             TechArticle techArticle = techService.getTechArticleById(articleId);
