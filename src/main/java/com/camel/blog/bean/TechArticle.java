@@ -1,5 +1,5 @@
 /**
- * The copyright od this code source belongs to
+ * The copyright of this code source belongs to
  * LightCode Website. Nobody has the right to use 
  * it without permission. If you has any question
  * when seeing this statement, please contact us by
