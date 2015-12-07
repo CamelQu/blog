@@ -9,6 +9,7 @@ package com.camel.blog.dao.impl;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
@@ -32,6 +33,16 @@ public class TechArticleDaoImpl extends SqlMapClientDaoSupport implements TechAr
         params.put("labelCode", labelCode);
         params.put("publishDate", publishDate);
         return (TechArticle) getSqlMapClientTemplate().queryForObject("techArticle.getTechArticle", params);
+    }
+    
+    @Override
+    public List<TechArticle> getTechArticleListByLabelCode(String labelCode) {
+        return (List<TechArticle>) getSqlMapClientTemplate().queryForList("techArticle.getTechArticleListByLabel", labelCode);
+    }
+    
+    @Override
+    public List<TechArticle> getTechArticleListByRegionCode(String regionCode) {
+        return (List<TechArticle>) getSqlMapClientTemplate().queryForList("techArticle.getTechArticleListByRegionCode", regionCode);
     }
 
 }

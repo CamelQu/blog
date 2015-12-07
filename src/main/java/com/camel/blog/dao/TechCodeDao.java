@@ -25,5 +25,7 @@ public interface TechCodeDao {
     public List<TechCode> getTechCodeByRegionName(String regionName);
     
     public TechCode getTechCodeByLabelName(String labelName);
+    
+    public String getRegionCodeByRegionName(String regionName);
 
 }

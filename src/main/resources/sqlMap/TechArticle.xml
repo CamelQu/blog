@@ -32,4 +32,18 @@
         WHERE region_code = #regionCode# AND label_code = #labelCode# AND publish_date = #publishDate#
     </select>
     
+    <select id="getTechArticleListByLabel" resultMap="techArticleMap" parameterClass="java.lang.String">
+        SELECT
+            <include refid="columns" />
+        FROM tech_article
+        WHERE label_code = #value#
+    </select>
+    
+    <select id="getTechArticleListByRegionCode" resultMap="techArticleMap" parameterClass="java.lang.String">
+        SELECT
+            <include refid="columns" />
+        FROM tech_article
+        WHERE region_code = #value#
+    </select>
+    
 </sqlMap>

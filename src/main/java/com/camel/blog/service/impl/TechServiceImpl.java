@@ -7,7 +7,9 @@
  */
 package com.camel.blog.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +46,7 @@ public class TechServiceImpl implements TechService {
             LOG.error("method getTechArticleById has input an illegle parameter:" + articleId);
             return null;
         } else {
-            try {
+            try {// articleId由三位组成，区域码1位，标签码1位，时间戳剩下位数
                 String regionCode = articleId.substring(0, 1);
                 String labelCode = articleId.substring(1, 2);
                 long timestamps = Long.parseLong(articleId.substring(2));
@@ -57,5 +59,24 @@ public class TechServiceImpl implements TechService {
             }
         }
     }
-
+    
+    @Override
+    public List<TechArticle> getTechArticleListByLabel(String label) {
+        if (label == null || label.equals("")) {
+            return new ArrayList<TechArticle>();
+        } else {
+            TechCode techCode = techCodeDao.getTechCodeByLabelName(label);
+            return techArticleDao.getTechArticleListByLabelCode(techCode.getTechLabelCode());
+        }
+    }
+    
+    @Override
+    public List<TechArticle> getTechArticleListByRegion(String regionName) {
+        if (regionName == null || regionName.equals("")) {
+            return new ArrayList<TechArticle>();
+        } else {
+            String regionCode = techCodeDao.getRegionCodeByRegionName(regionName);
+            return techArticleDao.getTechArticleListByRegionCode(regionCode);
+        }
+    }
 }

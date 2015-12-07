@@ -7,10 +7,13 @@
  */
 package com.camel.blog.web;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -49,6 +52,45 @@ public class TechRequest {
         } catch (Exception e) {
             LOG.error("getTechArticle has an error!", e);
             ModelAndView mv = new ModelAndView("techError");
+            return mv;
+        }
+    }
+
+    /**
+     * 获取博客列表
+     * 
+     * @param label 根据标签名获取，不是必须参数
+     * @return
+     */
+    @RequestMapping(value = "/tech/list.do")
+    public ModelAndView getTechListByLabel(@RequestParam(value = "label", required = false) String label,
+                                           @RequestParam(value = "region", required = false) String region) {
+        ModelAndView mv = new ModelAndView();
+        try {
+            if (label != null && (!label.equals(""))) {
+                List<TechArticle> articleList = techService.getTechArticleListByLabel(label);
+                mv.addObject("data", articleList);
+                mv.addObject("code", 200);
+                mv.addObject("success", true);
+            } else {
+                mv.addObject("code", 200);
+                mv.addObject("success", false);
+            }
+            
+            if (region != null && (!region.equals(""))) {
+                List<TechArticle> articleList = techService.getTechArticleListByRegion(region);
+                mv.addObject("data", articleList);
+                mv.addObject("code", 200);
+                mv.addObject("success", true);
+            } else {
+                mv.addObject("code", 200);
+                mv.addObject("success", false);
+            }
+            return mv;
+        } catch (Exception e) {
+            LOG.error("method getTechListByLabel has an error!", e);
+            mv.addObject("code", 500);
+            mv.addObject("success", false);
             return mv;
         }
     }

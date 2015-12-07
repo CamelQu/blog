@@ -44,6 +44,10 @@
         FROM tech_code WHERE region_code = #value#
     </select>
     
+    <select id="getRegionCodeByRegionName" resultMap="techCodeMap" parameterClass="java.lang.String">
+        SELECT DISTINCT region_code
+        FROM tech_code WHERE region_name = #value#
+    </select>
     <!-- <select id="getTechCodeByLabelCode" resultMap="techCodeMap" parameterClass="java.lang.String">
         SELECT
             <include refid="columns" />

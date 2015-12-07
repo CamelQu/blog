@@ -42,5 +42,10 @@ public class TechCodeDaoImpl extends SqlMapClientDaoSupport implements TechCodeD
     public TechCode getTechCodeByLabelName(String labelName) {
         return (TechCode) getSqlMapClientTemplate().queryForObject("techCode.getTechCodeByLabelName", labelName);
     }
+    
+    @Override
+    public String getRegionCodeByRegionName(String regionName) {
+        return (String) getSqlMapClientTemplate().queryForObject("techCode.getRegionCodeByRegionName", regionName);
+    }
 
 }

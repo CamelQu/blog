@@ -7,6 +7,8 @@
  */
 package com.camel.blog.service;
 
+import java.util.List;
+
 import com.camel.blog.bean.TechArticle;
 import com.camel.blog.bean.TechCode;
 
@@ -20,4 +22,8 @@ public interface TechService {
     public TechCode getTechCodeByLabelName(String labelName);
     
     public TechArticle getTechArticleById(String articleId);
+    
+    public List<TechArticle> getTechArticleListByLabel(String label);
+
+    public List<TechArticle> getTechArticleListByRegion(String regionName);
 }

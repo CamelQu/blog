@@ -7,6 +7,7 @@
  */
 package com.camel.blog.dao;
 
+import java.util.List;
 import java.util.Date;
 
 import com.camel.blog.bean.TechArticle;
@@ -19,5 +20,9 @@ import com.camel.blog.bean.TechArticle;
 public interface TechArticleDao {
     
     public TechArticle getTechArticle(String regionCode, String labelCode, Date publishDate);
+    
+    public List<TechArticle> getTechArticleListByLabelCode(String labelCode);
+    
+    public List<TechArticle> getTechArticleListByRegionCode(String regionCode);
     
 }
