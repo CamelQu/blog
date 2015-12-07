@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,6 +33,11 @@ public class TechRequest {
     @Autowired
     private TechService         techService;
 
+    /**
+     * 获取单个博文信息
+     * @param articleId 博文id
+     * @return
+     */
     @RequestMapping(value = "/tech/{articleId}.html")
     public ModelAndView getTechArticle(@PathVariable String articleId) {
         try {
@@ -65,7 +71,7 @@ public class TechRequest {
     @RequestMapping(value = "/tech/list.do")
     public ModelAndView getTechListByLabel(@RequestParam(value = "label", required = false) String label,
                                            @RequestParam(value = "region", required = false) String region) {
-        ModelAndView mv = new ModelAndView();
+        ModelAndView mv = new ModelAndView("techList");
         try {
             if (label != null && (!label.equals(""))) {
                 List<TechArticle> articleList = techService.getTechArticleListByLabel(label);
