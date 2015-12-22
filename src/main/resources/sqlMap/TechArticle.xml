@@ -46,4 +46,9 @@
         WHERE region_code = #value#
     </select>
     
+    <select id="getTechArticleTitlesTopN" resultClass="string" parameterClass="int">
+        SELECT title
+        FROM tech_article LIMIT #value#
+    </select>
+    
 </sqlMap>

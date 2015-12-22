@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="banner">
+
+    <typeAlias type="com.camel.blog.bean.Banner" alias="banner" />
+
+    <resultMap id="bannerMap" class="banner">
+        <result column="id" property="id" />
+        <result column="create_date" property="createDate" />
+        <result column="modified_date" property="modifiedDate" />
+        <result column="publish_date" property="publishDate" />
+        <result column="title" property="title" />
+        <result column="count" property="count" />
+        <result column="pic_path" property="picPath" />
+        <result column="content" property="content" />
+    </resultMap>
+
+    <sql id="columns">
+        id, create_date, modified_date, publish_date, title, count, pic_path, content
+    </sql>
+    <select id="getBannerPicPathTopN" resultClass="string" parameterClass="int">
+        SELECT pic_path FROM banner LIMIT #value#
+    </select>
+    
+    <select id="getBannerArticleById" resultMap="bannerMap" parameterClass="string">
+        SELECT
+            <include refid="columns" />
+        FROM banner LIMIT #value#
+    </select>
+    
+</sqlMap>

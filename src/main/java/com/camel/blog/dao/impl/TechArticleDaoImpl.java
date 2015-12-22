@@ -44,5 +44,10 @@ public class TechArticleDaoImpl extends SqlMapClientDaoSupport implements TechAr
     public List<TechArticle> getTechArticleListByRegionCode(String regionCode) {
         return (List<TechArticle>) getSqlMapClientTemplate().queryForList("techArticle.getTechArticleListByRegionCode", regionCode);
     }
+    
+    @Override
+    public List<String> getTechArticleTitlesTopN(int top) {
+        return (List<String>) getSqlMapClientTemplate().queryForList("techArticle.getTechArticleTitlesTopN", top);
+    }
 
 }

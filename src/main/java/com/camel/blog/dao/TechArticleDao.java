@@ -25,4 +25,6 @@ public interface TechArticleDao {
     
     public List<TechArticle> getTechArticleListByRegionCode(String regionCode);
     
+    public List<String> getTechArticleTitlesTopN(int top);
+    
 }

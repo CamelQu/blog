@@ -16,5 +16,8 @@ PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
     <sqlMap resource="sqlMap/Admin.xml" />
     <sqlMap resource="sqlMap/TechCode.xml" />
     <sqlMap resource="sqlMap/TechArticle.xml" />
+    <sqlMap resource="sqlMap/Banner.xml" />
+    <sqlMap resource="sqlMap/Essay.xml" />
+    <sqlMap resource="sqlMap/Tutorial.xml" />
 
 </sqlMapConfig>

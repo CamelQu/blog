@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Essay">
+
+    <typeAlias type="com.camel.blog.bean.Essay" alias="essay" />
+
+    <resultMap id="essayMap" class="essay">
+        <result column="id" property="id" />
+        <result column="create_date" property="createDate" />
+        <result column="modified_date" property="modifiedDate" />
+        <result column="publish_date" property="publishDate" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="count" property="count" />
+    </resultMap>
+
+    <sql id="columns">
+        id, create_date, modified_date, publish_date, title, content, count
+    </sql>
+
+    <select id="getEssayList" resultMap="essayMap" parameterClass="java.util.Map">
+        SELECT 
+            <include refid="columns" />
+        FROM essay LIMIT #start#, #limit#
+    </select>
+    
+    <select id="getEssay" resultMap="essayMap" parameterClass="int">
+        SELECT 
+            <include refid="columns" />
+        FROM essay WHERE id = #value#
+    </select>
+    
+    <select id="getEssayTitlesTopN" resultClass="string" parameterClass="int">
+        SELECT title FROM essay LIMIT #value#
+    </select>
+    
+</sqlMap>
