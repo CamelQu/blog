@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.camel.blog.bean.TechArticle;
 import com.camel.blog.service.HomePageService;
 
 /**
@@ -28,7 +27,7 @@ public class HomePageRequest {
     @Autowired
     private HomePageService homePageService;
     
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/index.html")
     public ModelAndView getHomePage() {
         try {
                 ModelAndView mv = new ModelAndView("homePage");

@@ -62,6 +62,7 @@
                 <value>/WebPage/</value>
                 <value>/WebPage/camel/</value>
                 <value>/WebPage/tech/</value>
+                <value>/WebPage/home/</value>
             </list>
         </property>
         <property name="freemarkerSettings">
